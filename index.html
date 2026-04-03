@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>VNSO — Cloud Camera AI | Hệ Sinh Thái Giám Sát Thông Minh Thế Hệ Mới</title>
+    <link rel="icon" href="images/icon.webp" type="image/gif" sizes="16x16">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Giải pháp Cloud Camera AI (CCA) từ VNSO - Kết hợp AI Vision và lưu trữ đám mây S3 bảo mật cao." name="description">
+    <meta content="cloud camera ai, giám sát thông minh, nhận diện khuôn mặt, vnso, camera ai vnso, lưu trữ cloud s3, vms trung tâm" name="keywords">
+    <meta content="VNSO" name="author">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
+    <link href="css/plugins.css" rel="stylesheet" type="text/css">
+    <link href="css/swiper.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/coloring.css" rel="stylesheet" type="text/css">
+    <link href="css/swiper-custom-1.css" rel="stylesheet" type="text/css">
+    <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css">
+
+    <style>
+        /* Expert Testimonial Section */
+        .expert-testimonial-section {
+            background: linear-gradient(135deg, #0a0e17 0%, #141c2e 50%, #0a0e17 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .expert-testimonial-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(0, 140, 255, 0.05) 0%, transparent 70%);
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        .expert-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 50px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+        .expert-card:hover {
+            border-color: rgba(0, 140, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 140, 255, 0.08);
+        }
+        .expert-avatar-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .expert-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(0, 140, 255, 0.5);
+            box-shadow: 0 0 30px rgba(0, 140, 255, 0.2);
+        }
+        .expert-avatar-ring {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: 142px;
+            height: 142px;
+            border-radius: 50%;
+            border: 2px dashed rgba(0, 140, 255, 0.3);
+            animation: rotateRing 20s linear infinite;
+        }
+        @keyframes rotateRing {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .expert-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(0, 140, 255, 0.15), rgba(0, 200, 255, 0.08));
+            border: 1px solid rgba(0, 140, 255, 0.25);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            color: #7ec8f8;
+            margin-bottom: 16px;
+        }
+        .expert-badge i {
+            color: #00a8ff;
+        }
+        .expert-name {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+        .expert-title {
+            color: #8899aa;
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .expert-quote {
+            font-size: 17px;
+            line-height: 1.85;
+            color: #c8d6e5;
+            position: relative;
+            padding-left: 24px;
+            border-left: 3px solid rgba(0, 140, 255, 0.4);
+            font-style: italic;
+        }
+        .expert-quote-icon {
+            font-size: 48px;
+            color: rgba(0, 140, 255, 0.15);
+            position: absolute;
+            top: -10px;
+            left: 30px;
+            font-family: Georgia, serif;
+        }
+        .expert-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 28px;
+        }
+        .expert-tag {
+            background: rgba(0, 140, 255, 0.08);
+            border: 1px solid rgba(0, 140, 255, 0.15);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #7ec8f8;
+            transition: all 0.3s ease;
+        }
+        .expert-tag:hover {
+            background: rgba(0, 140, 255, 0.15);
+            border-color: rgba(0, 140, 255, 0.3);
+        }
+        .ai-decoration {
+            position: absolute;
+            opacity: 0.04;
+            font-size: 200px;
+            color: #00a8ff;
+            right: -20px;
+            bottom: -30px;
+            pointer-events: none;
+        }
+        @media (max-width: 768px) {
+            .expert-card { padding: 30px 20px; }
+            .expert-quote { font-size: 15px; padding-left: 16px; }
+            .expert-name { font-size: 22px; }
+            .expert-avatar { width: 100px; height: 100px; }
+            .expert-avatar-ring { width: 112px; height: 112px; }
+        }
+    </style>
+</head>
+
+<body class="dark-scheme">
+    <div id="wrapper">
+        <a href="#" id="back-to-top"></a>
+
+        <!-- page preloader begin -->
+        <div id="de-loader"></div>
+        <!-- page preloader close -->
+
+        <!-- header begin -->
+        <header class="transparent">
+            <div id="topbar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="d-flex justify-content-between xs-hide">
+                                <div class="d-flex">
+                                    <div class="topbar-widget"><a href="#"><img src="images/svg-white/bell.svg" class="" alt="">Ưu đãi 50% cho giải pháp lắp đặt Cloud Camera AI mới.</a></div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="topbar-widget me-5"><a href="#"><img src="images/svg-white/phone.svg" class="" alt="">Hotline: 1900 636 106</a></div>
+                                    <div class="topbar-widget"><a href="#"><img src="images/svg-white/envelope.svg" class="" alt="">Email: info@vnso.vn</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="de-flex sm-pt10">
+                            <div class="de-flex-col">
+                                <div id="logo">
+                                    <a href="index.html">
+                                        <img class="logo-main" src="images/logo.webp" alt="">
+                                        <img class="logo-scroll" src="images/logo.webp" alt="">
+                                        <img class="logo-mobile" src="images/logo.webp" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="de-flex-col header-col-mid">
+                                <ul id="mainmenu">
+                                    <li><a class="menu-item" href="index.html">Trang chủ</a></li>
+                                    <li><a class="menu-item" href="services.html">Dịch vụ</a></li>
+                                    <li><a class="menu-item" href="brands.html">Đối tác / Thương hiệu</a></li>
+                                    <li><a class="menu-item" href="projects.html">Dự án</a></li>
+                                    <li><a class="menu-item" href="blog.html">Tin tức</a></li>
+                                    <li><a class="menu-item" href="contact.html">Liên hệ</a></li>
+                                </ul>
+                            </div>
+                            <div class="de-flex-col">
+                                <div class="menu_side_area">
+                                    <a class="btn-main fx-slide" href="contact.html"><span>Nhận báo giá miễn phí</span></a>
+                                    <span id="menu-btn"></span>
+                                </div>
+                                <div id="btn-extra" class="img">
+                                    <img src="images/ui/dots.svg" class="" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header close -->
+
+        <!-- content begin -->
+        <div class="no-bottom no-top" id="content">
+            <div id="top"></div>
+
+            <!-- Hero Section -->
+            <section class="realtive jarallax overflow-hidden text-light" data-video-src="mp4:video/3.mp4">
+                <img src="images/misc/8.webp" class="abs w-60 bottom-0 start-0 z-2 op-6" alt="" data-0="transform: translateY(0px);" data-500="transform: translateY(300px);">
+                <img src="images/misc/9.webp" class="abs w-40 top-0 end-0 z-2 op-6" alt="" data-0="transform: translateY(0px);" data-500="transform: translateY(-300px);">
+                <div class="sw-overlay op-8"></div>
+                <div class="de-gradient-edge-bottom z-2"></div>
+                <div class="container relative z-2">
+                    <div class="spacer-double sm-hide"></div>
+                    <div class="row g-4 justify-content-center text-center">
+                        <div class="col-lg-10 text-center relative">
+                            <div class="relative z-2">
+                                <div class="w-100 wow scaleIn">
+                                    <h1 class="cam-style mb-0 fs-64 fs-sm-10 col-12">CLOUD CAMERA AI<span></span><span></span><span></span><span></span></h1>
+                                </div>
+                                <p class="col-lg-6 offset-lg-3 wow fadeInUp" data-wow-delay=".4s">Bảo vệ doanh nghiệp và dự án của bạn với hệ thống Cloud Camera AI được thiết kế để giám sát 24/7, mang lại sự an tâm tuyệt đối.</p>
+                                <a class="btn-main fx-slide btn-line" href="contact.html"><span>Tư vấn ngay</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-double"></div>
+
+                    <div class="row g-4">
+                        <div class="col-lg-2 col-sm-4 wow fadeInRight" data-wow-delay="0s">
+                            <div class="text-center">
+                                <img src="images/svg-color/cctv.svg" class="w-70px mb-3" alt="">
+                                <h4>Lắp đặt chuyên nghiệp</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-4 wow fadeInRight" data-wow-delay=".2s">
+                            <div class="text-center">
+                                <img src="images/svg-color/networking.svg" class="w-70px mb-3" alt="">
+                                <h4>Thiết kế hệ thống AI</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-4 wow fadeInRight" data-wow-delay=".4s">
+                            <div class="text-center">
+                                <img src="images/svg-color/setting.svg" class="w-70px mb-3" alt="">
+                                <h4>Bảo trì định kỳ</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-4 wow fadeInRight" data-wow-delay=".6s">
+                            <div class="text-center">
+                                <img src="images/svg-color/monitor.svg" class="w-70px mb-3" alt="">
+                                <h4>Giám sát thông minh (VMS)</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-4 wow fadeInRight" data-wow-delay=".8s">
+                            <div class="text-center">
+                                <img src="images/svg-color/storage.svg" class="w-70px mb-3" alt="">
+                                <h4>Lưu trữ & Sao lưu Cloud S3</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-4 wow fadeInRight" data-wow-delay="1s">
+                            <div class="text-center">
+                                <img src="images/svg-color/chat.svg" class="w-70px mb-3" alt="">
+                                <h4>Tư vấn giải pháp doanh nghiệp</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose CCA -->
+            <section class="no-top no-bottom overflow-hidden">
+                <div class="container-fluid position-relative half-fluid">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 position-lg-absolute right-half h-100 overflow-hidden">
+                                <img src="images/misc/7.webp" class="w-100 abs end-0" data-0="transform: translateX(150px);" data-600="transform: translateX(0);" alt="">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="me-lg-3">
+                                    <div class="spacer-double"></div>
+                                    <div class="spacer-single sm-hide"></div>
+                                    <div class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">TẠI SAO CHỌN CCA</div>
+                                    <h2 class="wow fadeInUp" data-wow-delay=".2s">GIÁ TRỊ VƯỢT TRỘI</h2>
+                                    <div class="row g-4">
+                                        <div class="col-lg-4 col-md-4 col-sm-6">
+                                            <div class="py-4 bg-dark-2 rounded-1 text-center wow fadeInUp" data-wow-delay=".0s">
+                                                <h1 class="fs-72 mb-2">10</h1>
+                                                <div class="fs-18">năm kinh nghiệm</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <ul class="ul-style-2 text-white mb-4 wow fadeInUp" data-wow-delay=".6s">
+                                                <li>Hệ thống an ninh không kẽ hở.</li>
+                                                <li>Đội ngũ chuyên gia thực chiến.</li>
+                                                <li>Ứng dụng AI Vision mới nhất.</li>
+                                                <li>Phù hợp với mọi mức ngân sách.</li>
+                                                <li>Bảo trì và xử lý sự cố tức thì.</li>
+                                                <li>Được tin dùng bởi hơn 1800+ khách hàng.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <a class="btn-main fx-slide mb10 mb-3 wow fadeIn" href="contact.html"><span>Nhận Báo Giá</span></a>
+                                    <div class="spacer-single sm-hide"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats / Trusted -->
+            <section class="section-dark pt-80 pb-80 bg-color jarallax text-light">
+                <div class="container relative z-2">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-6">
+                            <div class="relative mt-3 mb-3">
+                                <img src="images/testimonial/1.webp" class="w-50px circle ms-min-10 wow fadeInRight" data-wow-delay=".2s" alt="">
+                                <img src="images/testimonial/2.webp" class="w-50px circle ms-min-10 wow fadeInRight" data-wow-delay=".4s" alt="">
+                                <img src="images/testimonial/3.webp" class="w-50px circle ms-min-10 wow fadeInRight" data-wow-delay=".6s" alt="">
+                                <img src="images/testimonial/4.webp" class="w-50px circle ms-min-10 wow fadeInRight" data-wow-delay=".8s" alt="">
+                                <img src="images/testimonial/5.webp" class="w-50px circle ms-min-10 wow fadeInRight" data-wow-delay="1s" alt="">
+                                <img src="images/testimonial/6.webp" class="w-50px circle ms-min-10 wow fadeInRight" data-wow-delay="1.2s" alt="">
+                                <img src="images/testimonial/7.webp" class="w-50px circle ms-min-10 wow fadeInRight" data-wow-delay="1.4s" alt="">
+                                <img src="images/testimonial/8.webp" class="w-50px circle ms-min-10 wow fadeInRight" data-wow-delay="1.6s" alt="">
+                            </div>
+                            <span class="wow fadeInRight" data-wow-delay="1.8s">Hàng ngàn khách hàng đã tin tưởng</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row g-4">
+                                <div class="col-lg-4 col-md-6 text-center">
+                                    <div class="de_count wow fadeInUp">
+                                        <h3 class="id-color-3"><span class="timer" data-to="2275" data-speed="3000"></span>+</h3>
+                                        <div class="text-light">Hệ thống CCA đã lắp đặt</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 text-center">
+                                    <div class="de_count wow fadeInUp">
+                                        <h3 class="id-color-3"><span class="timer" data-to="1800" data-speed="3000"></span>+</h3>
+                                        <div class="text-light">Khách hàng doanh nghiệp</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 text-center">
+                                    <div class="de_count wow fadeInUp">
+                                        <h3 class="id-color-3"><span class="timer" data-to="99" data-speed="3000"></span>%</h3>
+                                        <div class="text-light">Đánh giá hài lòng</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Industry Sectors -->
+            <section class="jarallax">
+                <img src="images/background/3.webp" class="jarallax-img" alt="">
+                <div class="sw-overlay op-4"></div>
+                <div class="container">
+                    <div class="row justify-content-center g-4 gx-5 relative z-index-1000">
+                        <div class="col-lg-8 text-center">
+                            <div class="subtitle wow fadeInUp mb-3">LĨNH VỰC PHỤC VỤ</div>
+                            <h2 class="mb20 wow fadeInUp" data-wow-delay=".2s">Giải pháp giám sát Cloud AI cao cấp cho nhiều loại hình:</h2>
+                            <div class="spacer-single"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="pt-0">
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6 mt-min-50 wow fadeInRight hover" data-wow-delay="0s">
+                            <div class="bg-dark-2 text-light h-100 overflow-hidden">
+                                <div class="relative overflow-hidden">
+                                    <img src="images/industry/1.webp" class="img-fluid hover-scale-1-1" alt="">
+                                    <div class="de-overlay-gradient-color h-50 top-50"></div>
+                                </div>
+                                <div class="p-30 text-center relative">
+                                    <h4 class="mb-0">Khách sạn & Khu nghỉ dưỡng</h4>
+                                    <div class="triangle-bottomright-dark-half"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mt-min-50 wow fadeInRight hover" data-wow-delay="0s">
+                            <div class="bg-dark-2 text-light h-100 overflow-hidden">
+                                <div class="relative overflow-hidden">
+                                    <img src="images/industry/2.webp" class="img-fluid hover-scale-1-1" alt="">
+                                    <div class="de-overlay-gradient-color h-50 top-50"></div>
+                                </div>
+                                <div class="p-30 text-center relative">
+                                    <h4 class="mb-0">Bất động sản & Tòa nhà</h4>
+                                    <div class="triangle-bottomright-dark-half"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mt-min-50 wow fadeInRight hover" data-wow-delay="0s">
+                            <div class="bg-dark-2 text-light h-100 overflow-hidden">
+                                <div class="relative overflow-hidden">
+                                    <img src="images/industry/3.webp" class="img-fluid hover-scale-1-1" alt="">
+                                    <div class="de-overlay-gradient-color h-50 top-50"></div>
+                                </div>
+                                <div class="p-30 text-center relative">
+                                    <h4 class="mb-0">Kho bãi & Chuỗi cung ứng</h4>
+                                    <div class="triangle-bottomright-dark-half"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mt-min-50 wow fadeInRight hover" data-wow-delay="0s">
+                            <div class="bg-dark-2 text-light h-100 overflow-hidden">
+                                <div class="relative overflow-hidden">
+                                    <img src="images/industry/4.webp" class="img-fluid hover-scale-1-1" alt="">
+                                    <div class="de-overlay-gradient-color h-50 top-50"></div>
+                                </div>
+                                <div class="p-30 text-center relative">
+                                    <h4 class="mb-0">Trường học & Cơ sở giáo dục</h4>
+                                    <div class="triangle-bottomright-dark-half"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- One-Stop Service -->
+            <section class="bg-dark-2 no-top no-bottom overflow-hidden relative">
+                <div class="container">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-6">
+                            <img src="images/misc/5.webp" class="w-100 wow fadeInUp" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="me-lg-3">
+                                <div class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">CHI TIẾT DỊCH VỤ</div>
+                                <h2 class="wow fadeInUp" data-wow-delay=".2s">Giải pháp Cloud Camera AI "One-Stop"</h2>
+                                <p>VNSO cung cấp hệ sinh thái CCA toàn diện từ hạ tầng Cloud S3 đến các Module AI thông minh, giúp doanh nghiệp chuyển đổi số hạ tầng giám sát, tối ưu hóa băng thông và nâng cao năng lực quản trị dữ liệu video thời gian thực.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="de-gradient-edge-bottom"></div>
+            </section>
+
+            <!-- Marquee -->
+            <section class="pt-40 pb-40 bg-light mt90 bg-dark">
+                <div class="d-flex">
+                    <div class="de-marquee-list wow">
+                        <div class="d-item">
+                            <span class="d-item-txt">Lắp đặt </span>
+                            <span class="d-item-display"><i class="d-item-block"></i></span>
+                            <span class="d-item-txt">Thiết kế hệ thống</span>
+                            <span class="d-item-display"><i class="d-item-block"></i></span>
+                            <span class="d-item-txt">Bảo trì</span>
+                            <span class="d-item-display"><i class="d-item-block"></i></span>
+                            <span class="d-item-txt">Giám sát</span>
+                            <span class="d-item-display"><i class="d-item-block"></i></span>
+                            <span class="d-item-txt">Lưu trữ Cloud S3</span>
+                            <span class="d-item-display"><i class="d-item-block"></i></span>
+                            <span class="d-item-txt">Nâng cấp hệ thống</span>
+                            <span class="d-item-display"><i class="d-item-block"></i></span>
+                            <span class="d-item-txt">Tư vấn hạ tầng</span>
+                            <span class="d-item-display"><i class="d-item-block"></i></span>
+                            <span class="d-item-txt">Cấu hình thông minh</span>
+                            <span class="d-item-display"><i class="d-item-block"></i></span>
+                            <span class="d-item-txt">IP Camera</span>
+                            <span class="d-item-display"><i class="d-item-block"></i></span>
+                            <span class="d-item-txt">Security Solutions </span>
+                            <span class="d-item-display"><i class="d-item-block"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Grid -->
+            <section class="pb-0">
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6 mb-4 wow fadeInRight" data-wow-delay="0s">
+                            <a href="services.html" class="d-block text-center relative bg-dark-2 p-40 pb-20 h-100">
+                                <div class="abs end-0 top-0 p-3 pe-4">01</div>
+                                <img src="images/svg-white/cctv.svg" class="w-90px mb-3 bg-color p-3 mt-min-60" alt="">
+                                <h4>Lắp đặt</h4>
+                                <p>Thiết lập camera tại các vị trí chiến lược, đảm bảo bao quát tối đa.</p>
+                                <div class="triangle-bottomright-dark"></div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4 wow fadeInRight" data-wow-delay=".2s">
+                            <a href="services.html" class="d-block text-center relative bg-dark-2 p-40 pb-20 h-100">
+                                <div class="abs end-0 top-0 p-3 pe-4">02</div>
+                                <img src="images/svg-white/networking.svg" class="w-90px mb-3 bg-color p-3 mt-min-60" alt="">
+                                <h4>Thiết kế hệ thống</h4>
+                                <p>Quy hoạch hạ tầng an ninh tùy biến theo nhu cầu đặc thù.</p>
+                                <div class="triangle-bottomright-dark"></div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4 wow fadeInRight" data-wow-delay=".4s">
+                            <a href="services.html" class="d-block text-center relative bg-dark-2 p-40 pb-20 h-100">
+                                <div class="abs end-0 top-0 p-3 pe-4">03</div>
+                                <img src="images/svg-white/setting.svg" class="w-90px mb-3 bg-color p-3 mt-min-60" alt="">
+                                <h4>Bảo trì</h4>
+                                <p>Dịch vụ kiểm tra và khắc phục lỗi định kỳ, đảm bảo tính sẵn sàng.</p>
+                                <div class="triangle-bottomright-dark"></div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4 wow fadeInRight" data-wow-delay=".6s">
+                            <a href="services.html" class="d-block text-center relative bg-dark-2 p-40 pb-20 h-100">
+                                <div class="abs end-0 top-0 p-3 pe-4">04</div>
+                                <img src="images/svg-white/monitor.svg" class="w-90px mb-3 bg-color p-3 mt-min-60" alt="">
+                                <h4>Giám sát</h4>
+                                <p>Phân tích hình ảnh thời gian thực bởi chuyên gia hoặc hệ thống AI.</p>
+                                <div class="triangle-bottomright-dark"></div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4 wow fadeInRight" data-wow-delay=".0s">
+                            <a href="services.html" class="d-block text-center relative bg-dark-2 p-40 pb-20 h-100">
+                                <div class="abs end-0 top-0 p-3 pe-4">05</div>
+                                <img src="images/svg-white/storage.svg" class="w-90px mb-3 bg-color p-3 mt-min-60" alt="">
+                                <h4>Lưu trữ Cloud S3</h4>
+                                <p>Giải pháp lưu trữ đám mây bảo mật, chống mất mát dữ liệu.</p>
+                                <div class="triangle-bottomright-dark"></div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4 wow fadeInRight" data-wow-delay=".4s">
+                            <a href="services.html" class="d-block text-center relative bg-dark-2 p-40 pb-20 h-100">
+                                <div class="abs end-0 top-0 p-3 pe-4">06</div>
+                                <img src="images/svg-white/upgrade.svg" class="w-90px mb-3 bg-color p-3 mt-min-60" alt="">
+                                <h4>Nâng cấp hệ thống</h4>
+                                <p>Chuyển đổi Camera Analog cũ sang hệ thống Cloud AI HD.</p>
+                                <div class="triangle-bottomright-dark"></div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4 wow fadeInRight" data-wow-delay=".6s">
+                            <a href="services.html" class="d-block text-center relative bg-dark-2 p-40 pb-20 h-100">
+                                <div class="abs end-0 top-0 p-3 pe-4">07</div>
+                                <img src="images/svg-white/chat.svg" class="w-90px mb-3 bg-color p-3 mt-min-60" alt="">
+                                <h4>Tư vấn hạ tầng</h4>
+                                <p>Khảo sát thực tế và xác định mô hình triển khai tối ưu.</p>
+                                <div class="triangle-bottomright-dark"></div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4 wow fadeInRight" data-wow-delay=".8s">
+                            <a href="services.html" class="d-block text-center relative bg-dark-2 p-40 pb-20 h-100">
+                                <div class="abs end-0 top-0 p-3 pe-4">08</div>
+                                <img src="images/svg-white/configuration.svg" class="w-90px mb-3 bg-color p-3 mt-min-60" alt="">
+                                <h4>Cấu hình thông minh</h4>
+                                <p>Tích hợp ứng dụng di động để quản lý từ xa mọi lúc.</p>
+                                <div class="triangle-bottomright-dark"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- News & Blog -->
+            <section class="bg-dark text-light">
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col-lg-6 offset-lg-3 text-center">
+                            <div class="subtitle wow fadeInUp mb-3">CẬP NHẬT CÔNG NGHỆ</div>
+                            <h2 class="wow fadeInUp" data-wow-delay=".2s">TIN TỨC & BLOG</h2>
+                        </div>
+                    </div>
+                    <div class="row g-4 wow fadeInUp">
+                        <div class="col-lg-3">
+                            <div class="overflow-hidden">
+                                <div class="hover relative rounded-1 overflow-hidden">
+                                    <div class="abs z-2 bg-dark-2 text-white p-3 pb-2 m-4 text-center fw-600">
+                                        <h4 class="fs-36 mb-0 lh-1">20</h4>
+                                        <span>Tháng 6</span>
+                                    </div>
+                                    <img src="images/news/1.webp" class="w-100 hover-scale-1-1" alt="">
+                                    <a href="blog-single.html" class="d-block abs w-100 h-100 top-0 start-0"></a>
+                                </div>
+                                <div class="p-40 bg-dark-2 relative">
+                                    <h4><a class="text-white" href="blog-single.html">Camera AI: Định hình tương lai của ngành giám sát an ninh.</a></h4>
+                                    <div class="triangle-bottomright-dark"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="overflow-hidden">
+                                <div class="hover relative rounded-1 overflow-hidden">
+                                    <div class="abs z-2 bg-dark-2 text-white p-3 pb-2 m-4 text-center fw-600">
+                                        <h4 class="fs-36 mb-0 lh-1">19</h4>
+                                        <span>Tháng 5</span>
+                                    </div>
+                                    <img src="images/news/2.webp" class="w-100 hover-scale-1-1" alt="">
+                                    <a href="blog-single.html" class="d-block abs w-100 h-100 top-0 start-0"></a>
+                                </div>
+                                <div class="p-40 bg-dark-2 relative">
+                                    <h4><a class="text-white" href="blog-single.html">Sức mạnh dữ liệu: Cách AI giúp xử lý nhanh các sự cố và rủi ro.</a></h4>
+                                    <div class="triangle-bottomright-dark"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="overflow-hidden">
+                                <div class="hover relative rounded-1 overflow-hidden">
+                                    <div class="abs z-2 bg-dark-2 text-white p-3 pb-2 m-4 text-center fw-600">
+                                        <h4 class="fs-36 mb-0 lh-1">18</h4>
+                                        <span>Tháng 3</span>
+                                    </div>
+                                    <img src="images/news/3.webp" class="w-100 hover-scale-1-1" alt="">
+                                    <a href="blog-single.html" class="d-block abs w-100 h-100 top-0 start-0"></a>
+                                </div>
+                                <div class="p-40 bg-dark-2 relative">
+                                    <h4><a class="text-white" href="blog-single.html">Cân bằng giữa an ninh và bảo mật thông tin trong kỷ nguyên AI.</a></h4>
+                                    <div class="triangle-bottomright-dark"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="overflow-hidden">
+                                <div class="hover relative rounded-1 overflow-hidden">
+                                    <div class="abs z-2 bg-dark-2 text-white p-3 pb-2 m-4 text-center fw-600">
+                                        <h4 class="fs-36 mb-0 lh-1">17</h4>
+                                        <span>Tháng 3</span>
+                                    </div>
+                                    <img src="images/news/4.webp" class="w-100 hover-scale-1-1" alt="">
+                                    <a href="blog-single.html" class="d-block abs w-100 h-100 top-0 start-0"></a>
+                                </div>
+                                <div class="p-40 bg-dark-2 relative">
+                                    <h4><a class="text-white" href="blog-single.html">An toàn công cộng: Vai trò ngày càng lớn của giải pháp giám sát thông minh.</a></h4>
+                                    <div class="triangle-bottomright-dark"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- EXPERT TESTIMONIAL - GS.TSKH LÊ ĐÌNH HUY -->
+            <!-- ============================================================ -->
+            <section class="expert-testimonial-section text-light">
+                <div class="container relative z-2">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center mb-4">
+                            <div class="subtitle wow fadeInUp mb-3">NHẬN ĐỊNH CHUYÊN GIA</div>
+                            <h2 class="wow fadeInUp" data-wow-delay=".2s">Góc Nhìn Từ Giới Khoa Học</h2>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10 wow fadeInUp" data-wow-delay=".4s">
+                            <div class="expert-card">
+                                <div class="ai-decoration">AI</div>
+                                <div class="expert-quote-icon">"</div>
+                                <div class="row align-items-center g-4">
+                                    <div class="col-lg-3 text-center">
+                                        <div class="expert-avatar-wrapper">
+                                            <div class="expert-avatar-ring"></div>
+                                            <img src="images/expert/le-dinh-huy.jpg" class="expert-avatar" alt="GS.TSKH Lê Đình Huy">
+                                        </div>
+                                        <div class="mt-3">
+                                            <div class="expert-badge">
+                                                <i class="icofont-verification-check"></i>
+                                                Chuyên gia AI
+                                            </div>
+                                        </div>
+                                        <div class="expert-name">GS.TSKH Lê Đình Huy</div>
+                                        <div class="expert-title">Chuyên gia Trí tuệ Nhân tạo<br>& Thị giác Máy tính</div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="expert-quote">
+                                            Trong kỷ nguyên số, trí tuệ nhân tạo không còn là khái niệm viễn tưởng mà đã trở thành công cụ thiết yếu trong mọi lĩnh vực. Hệ sinh thái Cloud Camera AI của VNSO là minh chứng rõ ràng cho sự hội tụ giữa nghiên cứu khoa học và ứng dụng thực tiễn — khi thuật toán AI Vision được tích hợp trực tiếp vào hạ tầng giám sát, cho phép nhận diện khuôn mặt, phân tích hành vi và cảnh báo chủ động theo thời gian thực.
+                                            <br><br>
+                                            Điều đáng ghi nhận là VNSO đã xây dựng được nền tảng xử lý dữ liệu video thông minh trên hạ tầng Cloud S3, kết hợp Deep Learning và Computer Vision một cách hiệu quả — đây chính là hướng đi đúng đắn để Việt Nam từng bước làm chủ công nghệ AI trong lĩnh vực an ninh thông minh.
+                                        </div>
+                                        <div class="expert-tags">
+                                            <span class="expert-tag">#AI Vision</span>
+                                            <span class="expert-tag">#Deep Learning</span>
+                                            <span class="expert-tag">#Computer Vision</span>
+                                            <span class="expert-tag">#Cloud Camera</span>
+                                            <span class="expert-tag">#Trí tuệ nhân tạo</span>
+                                            <span class="expert-tag">#An ninh thông minh</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END EXPERT TESTIMONIAL -->
+
+            <!-- CTA Section -->
+            <section class="bg-color py-4">
+                <div class="container">
+                    <div class="row g-0">
+                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".2s">
+                            <a href="contact.html" class="d-block relative bg-color text-light p-4 rounded-1">
+                                <i class="white p-3 rounded-1 fs-56 icofont-phone-circle"></i>
+                                <div class="absolute abs-middle ms-90px">
+                                    <span>Giải đáp thắc mắc</span>
+                                    <h4>Gọi ngay: 1900 636 106</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".4s">
+                            <a href="contact.html" class="d-block relative bg-color text-white p-4 rounded-1">
+                                <i class="white p-3 rounded-1 fs-56 icofont-calculator"></i>
+                                <div class="absolute abs-middle ms-90px">
+                                    <span>Yêu Cầu Khảo Sát & Báo Giá Miễn Phí</span>
+                                    <h4>Gửi yêu cầu ngay</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".6s">
+                            <a href="projects.html" class="d-block relative bg-color text-white p-4 rounded-1">
+                                <i class="white p-3 rounded-1 fs-56 icofont-image"></i>
+                                <div class="absolute abs-middle ms-90px">
+                                    <span>Dự án thực tế</span>
+                                    <h4>Các dự án tiêu biểu</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <!-- content close -->
+
+        <!-- footer begin -->
+        <footer>
+            <div class="container">
+                <div class="row gx-5">
+                    <div class="col-lg-4 col-sm-6">
+                        <img src="images/logo.webp" class="w-150px" alt="">
+                        <div class="spacer-20"></div>
+                        <p>VỀ VNSO CCA<br>Nâng tầm quản trị với hệ sinh thái Cloud Camera AI tích hợp thị giác máy tính đột phá. Chúng tôi cung cấp giải pháp phân tích dữ liệu thông minh — từ định danh FaceID đến báo cáo Heatmap — biến dữ liệu video thành công cụ đắc lực để tối ưu vận hành và bảo vệ tài sản tuyệt đối.</p>
+                        <div class="social-icons mb-sm-30">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-discord"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="widget">
+                                    <h5>VNSO Technology</h5>
+                                    <ul>
+                                        <li><a href="index.html">Trang chủ</a></li>
+                                        <li><a href="services.html">Dịch vụ AI</a></li>
+                                        <li><a href="projects.html">Dự án tiêu biểu</a></li>
+                                        <li><a href="contact.html">Nhận báo giá</a></li>
+                                        <li><a href="blog.html">Tin tức công nghệ</a></li>
+                                        <li><a href="contact.html">Liên hệ</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="widget">
+                                    <h5>Dịch Vụ AI</h5>
+                                    <ul>
+                                        <li><a href="services.html">Tư vấn hạ tầng VMS</a></li>
+                                        <li><a href="services.html">Lắp đặt hệ thống CCA</a></li>
+                                        <li><a href="services.html">Cấu hình Cloud S3</a></li>
+                                        <li><a href="services.html">Giám sát AI 24/7</a></li>
+                                        <li><a href="services.html">Bảo trì hệ thống</a></li>
+                                        <li><a href="services.html">Sao lưu dữ liệu</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
+                        <div class="widget">
+                            <div class="fw-bold text-white"><i class="icofont-clock-time me-2 id-color"></i>Thời gian làm việc</div>
+                            Thứ 2 - Thứ 7 | 08:00 - 18:00
+                            <div class="spacer-20"></div>
+                            <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color"></i>Địa chỉ</div>
+                            106 Nguyễn Văn Trỗi, P. Phú Nhuận, TP.HCM
+                            <div class="spacer-20"></div>
+                            <div class="fw-bold text-white"><i class="icofont-envelope me-2 id-color"></i>Kết nối</div>
+                            <a href="mailto:info@vnso.vn">info@vnso.vn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="subfooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="de-flex">
+                                <div class="de-flex-col">
+                                    Copyright 2026 - 2026 VNSO
+                                </div>
+                                <ul class="menu-simple">
+                                    <li><a href="#">Điều khoản & Điều kiện</a></li>
+                                    <li><a href="#">Chính sách bảo mật</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer close -->
+    </div>
+
+    <!-- overlay content begin -->
+    <div id="extra-wrap" class="text-light">
+        <div id="btn-close">
+            <span></span>
+            <span></span>
+        </div>
+        <div id="extra-content">
+            <img src="images/logo.webp" class="w-150px" alt="">
+            <div class="spacer-30-line"></div>
+            <h5 class="mb-3">Dịch vụ triển khai</h5>
+            <ul class="ul-style-2">
+                <li><a href="services.html">Tư vấn hạ tầng VMS</a></li>
+                <li><a href="services.html">Lắp đặt hệ thống CCA</a></li>
+                <li><a href="services.html">Cấu hình Cloud S3</a></li>
+                <li><a href="services.html">Giám sát AI 24/7</a></li>
+                <li><a href="services.html">Bảo trì hệ thống</a></li>
+                <li><a href="services.html">Sao lưu dữ liệu</a></li>
+            </ul>
+            <div class="spacer-30-line"></div>
+            <h5>Contact Us</h5>
+            <div><i class="icofont-clock-time me-2"></i>Thứ 2 - Thứ 7: 08:00 - 18:00</div>
+            <div><i class="icofont-location-pin me-2"></i>106 Nguyễn Văn Trỗi, Phường 8, Quận Phú Nhuận, TP. HCM</div>
+            <div><i class="icofont-envelope me-2"></i>Email: <a href="mailto:info@vnso.vn">info@vnso.vn</a></div>
+            <div class="spacer-30-line"></div>
+            <h5>CCA VNSO</h5>
+            <p>Làm chủ an ninh doanh nghiệp với sức mạnh trí tuệ nhân tạo từ Cloud Camera AI. Không chỉ ghi hình thụ động, hệ thống của VNSO tự động phân tích hành vi, nhận diện thông minh và cảnh báo chủ động thời gian thực, giúp bạn ngăn ngừa rủi ro trước khi sự cố xảy ra.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- overlay content end -->
+
+    <!-- Javascript Files -->
+    <script src="js/vendors.js"></script>
+    <script src="js/designesia.js"></script>
+    <script src="js/swiper.js"></script>
+    <script src="js/custom-marquee.js"></script>
+    <script src="js/custom-swiper-1.js"></script>
+</body>
+
+</html>
