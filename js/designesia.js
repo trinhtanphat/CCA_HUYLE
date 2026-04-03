@@ -1154,8 +1154,11 @@
      $(function(){
         $('#de-loader ').prepend($('<div class="subtitle">Loading</div>'));
          'use strict';
+         var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
          f_rtl();         
-         $(".jarallax").jarallax();
+         if (!reduceMotion) {
+             $(".jarallax").jarallax();
+         }
          load_magnificPopup();
 		 grid_gallery();
          init_resize();
@@ -1332,7 +1335,9 @@
          custom_elements();
          init(); 
          
-         new WOW().init();
+         if (!reduceMotion) {
+             new WOW().init();
+         }
 
          
          // one page navigation
@@ -1373,15 +1378,25 @@
          /* --------------------------------------------------
           * window | on resize
           * --------------------------------------------------*/
+         var resizeDebounceTimer;
          $(window).resize(function() {
-             init_resize();
-			 grid_gallery();
+             clearTimeout(resizeDebounceTimer);
+             resizeDebounceTimer = setTimeout(function() {
+                 init_resize();
+				 grid_gallery();
+             }, 120);
          });
 
          /* --------------------------------------------------
           * window | on scroll
           * --------------------------------------------------*/
+         var scrollTicking = false;
          jQuery(window).on("scroll", function() {
+             if (scrollTicking) {
+                 return;
+             }
+             scrollTicking = true;
+             window.requestAnimationFrame(function() {
              /* functions */
              header_sticky();
              de_counter();
@@ -1454,16 +1469,34 @@
             var progress = (100 * pixels) / pageHeight;
             $("div.scrollbar").css("width", progress + "%");
             $("div.scrollbar-v").css("height", progress + "px");
-
-
+            scrollTicking = false;
+            });
          });
          $(function() {
              "use strict";
+             var bgLoop = $('.bg-loop');
+             if (!bgLoop.length) {
+                 return;
+             }
+
              var x = 0;
-             setInterval(function() {
-                 x -= 1;
-                 $('.bg-loop').css('background-position', x + 'px 0');
-             }, 50);
+             var lastFrameAt = 0;
+
+             function animateBgLoop(ts) {
+                 if (document.hidden) {
+                     window.requestAnimationFrame(animateBgLoop);
+                     return;
+                 }
+
+                 if (!lastFrameAt || ts - lastFrameAt >= 50) {
+                     x -= 1;
+                     bgLoop.css('background-position', x + 'px 0');
+                     lastFrameAt = ts;
+                 }
+                 window.requestAnimationFrame(animateBgLoop);
+             }
+
+             window.requestAnimationFrame(animateBgLoop);
          })
 		 
 		
